@@ -16,10 +16,34 @@
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, quae!
 		</span>
 	</div>
-
+	
+	<!-- // Conditionals and Loops -->
 	<div id="app3">
 		<p v-if="seen">Now you see me</p>
 	</div>
+
+	<div id="app4">
+		<ol>
+		    <li v-for="todo in todos">
+		    	{{ todo.text }}
+		    </li>
+		</ol>
+	</div>
+
+	<div id="app5">
+		<p>{{ message }}</p>
+		<button type="button" class="btn btn-primary" v-on:click='reverseMessage'>Reverse Message</button>
+	</div>
+
+	<div id="app6">
+		<!-- Hello VueJS -->
+		<p>{{ message }}</p>
+		<!-- Same attribute value of input -->
+		<!-- Hello VueJS -->
+		<input v-model="message">
+
+	</div>
+	
 	<script>
 		// app
 		var app = new Vue({
@@ -37,11 +61,46 @@
 			}
 		});
 
-		// app3
+		// app3 : Conditionals and Loops
 		var app3 = new Vue({
 			el: '#app3',
 			data: {
-				seen: false
+				seen: true
+			}
+		});
+
+		// app4 : For
+		var app4 = new Vue({
+			el: '#app4',
+			data: {
+				todos: [
+					{ text: 'Learn JavaScript'},
+					{ text: 'Learn Vue'},
+					{ text: 'Build Something awesome'}
+				]
+			}
+		});
+
+		// app5 : Handling User Input
+		// v-on:click
+		// methods:
+		var app5 = new Vue({
+			el: '#app5',
+			data: {
+				message: 'Hello VueJS'
+			},
+			methods: {
+				reverseMessage: function(){
+					this.message = this.message.split('').reverse().join('')
+				}
+			}
+		});
+
+		// app6 : v-model
+		var app6 = new Vue({
+			el: '#app6',
+			data: {
+				message: 'Hello VueJS'
 			}
 		});
 	</script>
